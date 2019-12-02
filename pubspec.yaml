@@ -1,8 +1,8 @@
 name: rsa_encrypt
-description: A new Flutter package project.
+description: Enable you to quickly implement rsa encryption.
 version: 0.0.1
-author:
-homepage:
+author: Abdelbaki Boukerche <boukerche.abdelbaki@gmail.com>
+homepage: https://github.com/AbdelbakiBoukerche/rsa_encrypt
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
