@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  asn1lib: ^0.5.14
+  pointycastle: ^1.0.2
 
 dev_dependencies:
   flutter_test:
