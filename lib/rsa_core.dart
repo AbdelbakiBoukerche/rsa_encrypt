@@ -230,7 +230,7 @@ class RsaKeyHelper {
   }
 }
 
-/// IMPORTANT! in order to encrypt string you need to convert your public key from pem to RSAPublicKey
+/// IMPORTANT! in order to encrypt string you need to parse your public key from pem to RSAPublicKey
 
 ///Encrypt a string
 String encrypt(String plaintext, RSAPublicKey publicKey) {
@@ -241,7 +241,7 @@ String encrypt(String plaintext, RSAPublicKey publicKey) {
   return new String.fromCharCodes(cipherText);
 }
 
-/// IMPORTANT! in order to encrypt string you need to convert your private key from pem to RSAPrivateKey
+/// IMPORTANT! in order to decrypt string you need to parse your private key from pem to RSAPrivateKey
 
 ///Decrypt a string
 String decrypt(String ciphertext, RSAPrivateKey privateKey) {
