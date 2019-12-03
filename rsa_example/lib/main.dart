@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rsa_encrypt/rsa_core.dart';
+import 'package:rsa_encrypt/rsa_encrypt.dart';
 import 'package:pointycastle/api.dart' as crypto;
 import 'package:pointycastle/export.dart' as rsaKeys;
 
