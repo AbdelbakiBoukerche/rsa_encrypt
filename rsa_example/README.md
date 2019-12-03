@@ -1,6 +1,8 @@
 # rsa_example
 
-A new Flutter project.
+RSA encryption package example.
+
+**A youtube video will be available soon**
 
 ## Getting Started
 
