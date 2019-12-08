@@ -1,3 +1,3 @@
-## [1.0.1] - 12/08/2019.
+## [1.0.2] - 12/08/2019.
 
-* Second release: Ability to generate private and public keys, encrypt and decrypt strings.
+* Ability to generate private and public keys, encrypt and decrypt strings with an example app.

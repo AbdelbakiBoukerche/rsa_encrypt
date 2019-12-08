@@ -1,6 +1,6 @@
 name: rsa_encrypt
 description: Enable you to quickly implement rsa encryption in your flutter app, it covers everything from Generating key pairs, encrypt and decrypting strings.
-version: 1.0.1
+version: 1.0.2
 author: Abdelbaki Boukerche <boukerche.abdelbaki@gmail.com>
 homepage: https://github.com/AbdelbakiBoukerche/rsa_encrypt
 
