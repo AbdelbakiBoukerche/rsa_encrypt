@@ -1,3 +1,3 @@
-## [0.0.1] - 12/02/2019.
+## [1.0.1] - 12/08/2019.
 
-* TODO: Describe initial release.
+* Second release: Ability to generate private and public keys, encrypt and decrypt strings.
