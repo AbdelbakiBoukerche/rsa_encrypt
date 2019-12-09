@@ -1,3 +1,3 @@
-## [1.0.2] - 12/08/2019.
+## [1.0.3] - 12/08/2019.
 
-* Ability to generate private and public keys, encrypt and decrypt strings with an example app.
+* Documentation on how to use this package.
