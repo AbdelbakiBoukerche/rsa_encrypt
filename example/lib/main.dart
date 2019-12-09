@@ -28,8 +28,8 @@ class _MyAppState extends State<MyApp> {
   crypto.AsymmetricKeyPair keyPair;
 
   /// in order to encrypt and decrypt text we need public and private keys this will store [RSAPrivateKey & RSAPublicKey]
-  rsaKeys.RSAPrivateKey privateKey;
-  rsaKeys.RSAPublicKey publicKey;
+  //rsaKeys.RSAPrivateKey secPrivateKey;
+  //rsaKeys.RSAPublicKey secPublicKey;
 
   /// this will store the keys as string after converting them to [PEM]
   String priKey;
