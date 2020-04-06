@@ -2,6 +2,6 @@
 
 * Documentation on how to use this package.
 
-## [1.0.3] - 06/04/2020.
+## [1.0.4] - 06/04/2020.
 
 * Updating dependencies and updating example app.
