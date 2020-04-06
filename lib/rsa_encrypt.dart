@@ -230,9 +230,7 @@ class RsaKeyHelper {
   }
 }
 
-/// IMPORTANT! in order to encrypt string you need to parse your public key from pem to RSAPublicKey
-
-///Encrypt a string
+/// Encrypting String
 String encrypt(String plaintext, RSAPublicKey publicKey) {
   var cipher = new RSAEngine()
     ..init(true, new PublicKeyParameter<RSAPublicKey>(publicKey));
@@ -241,9 +239,7 @@ String encrypt(String plaintext, RSAPublicKey publicKey) {
   return new String.fromCharCodes(cipherText);
 }
 
-/// IMPORTANT! in order to decrypt string you need to parse your private key from pem to RSAPrivateKey
-
-///Decrypt a string
+/// Decrypting String
 String decrypt(String ciphertext, RSAPrivateKey privateKey) {
   var cipher = new RSAEngine()
     ..init(false, new PrivateKeyParameter<RSAPrivateKey>(privateKey));
@@ -258,6 +254,7 @@ String decrypt(String ciphertext, RSAPrivateKey privateKey) {
 /// including a [SecureRandom]
 AsymmetricKeyPair<PublicKey, PrivateKey> getRsaKeyPair(
     SecureRandom secureRandom) {
+  /// Set BitStrength to [1024, 2048 or 4096]
   var rsapars = new RSAKeyGeneratorParameters(BigInt.from(65537), 4096, 5);
   var params = new ParametersWithRandom(rsapars, secureRandom);
   var keyGenerator = new RSAKeyGenerator();
