@@ -6,7 +6,7 @@ import 'dart:typed_data';
 
 import "package:asn1lib/asn1lib.dart";
 import 'package:flutter/foundation.dart';
-import "package:pointycastle/export.dart";
+import 'package:pointycastle/export.dart';
 
 /// Helper class to handle RSA key generation, encoding, decoding, encrypting & decrypting strings
 class RsaKeyHelper {
@@ -213,7 +213,7 @@ class RsaKeyHelper {
 
     var dataBase64 = base64.encode(topLevel.encodedBytes);
 
-    return """-----BEGIN PRIVATE KEY-----\r\n$dataBase64\r\n-----END PRIVATE KEY-----""";
+    return """-----BEGIN RSA PRIVATE KEY-----\r\n$dataBase64\r\n-----END RSA PRIVATE KEY-----""";
   }
 
   /// Encode Public key to PEM Format
@@ -226,7 +226,7 @@ class RsaKeyHelper {
     topLevel.add(ASN1Integer(publicKey.exponent));
 
     var dataBase64 = base64.encode(topLevel.encodedBytes);
-    return """-----BEGIN PUBLIC KEY-----\r\n$dataBase64\r\n-----END PUBLIC KEY-----""";
+    return """-----BEGIN RSA PUBLIC KEY-----\r\n$dataBase64\r\n-----END RSA PUBLIC KEY-----""";
   }
 }
 
@@ -255,7 +255,7 @@ String decrypt(String ciphertext, RSAPrivateKey privateKey) {
 AsymmetricKeyPair<PublicKey, PrivateKey> getRsaKeyPair(
     SecureRandom secureRandom) {
   /// Set BitStrength to [1024, 2048 or 4096]
-  var rsapars = new RSAKeyGeneratorParameters(BigInt.from(65537), 4096, 5);
+  var rsapars = new RSAKeyGeneratorParameters(BigInt.from(65537), 1024, 5);
   var params = new ParametersWithRandom(rsapars, secureRandom);
   var keyGenerator = new RSAKeyGenerator();
   keyGenerator.init(params);

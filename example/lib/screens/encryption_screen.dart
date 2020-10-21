@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import "package:pointycastle/export.dart";
 import 'package:rsa_encrypt/rsa_encrypt.dart';
-import 'package:marquee/marquee.dart';
 
 class EncryptionScreen extends StatefulWidget {
   final RSAPrivateKey rsaPrivateKey;
@@ -83,7 +82,7 @@ class _EncryptionScreenState extends State<EncryptionScreen> {
             height: 100.0,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              child: Text(_rsaKeyPem),
+              child: SelectableText(_rsaKeyPem),
             ),
           ),
           Divider(),
