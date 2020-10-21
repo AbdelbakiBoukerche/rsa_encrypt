@@ -2,7 +2,7 @@ name: rsa_encrypt
 description: Enable you to quickly implement rsa encryption in your flutter app,
   it covers everything from Generating key pairs, encrypt and decrypting
   strings.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/AbdelbakiBoukerche/rsa_encrypt
 
 environment:
@@ -11,9 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  pointycastle: ^1.0.2
-  asn1lib: ^0.7.0
-  
+  asn1lib: ^0.8.1
+  pointycastle: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -24,4 +24,3 @@ flutter: null
 # assets:
 #  - images/a_dot_burr.jpeg
 #  - images/a_dot_ham.jpeg
-

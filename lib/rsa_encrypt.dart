@@ -191,12 +191,12 @@ class RsaKeyHelper {
     var version = ASN1Integer(BigInt.from(0));
     var modulus = ASN1Integer(privateKey.n);
     var publicExponent = ASN1Integer(privateKey.exponent);
-    var privateExponent = ASN1Integer(privateKey.d);
+    var privateExponent = ASN1Integer(privateKey.privateExponent);
     var p = ASN1Integer(privateKey.p);
     var q = ASN1Integer(privateKey.q);
-    var dP = privateKey.d % (privateKey.p - BigInt.from(1));
+    var dP = privateKey.privateExponent % (privateKey.p - BigInt.from(1));
     var exp1 = ASN1Integer(dP);
-    var dQ = privateKey.d % (privateKey.q - BigInt.from(1));
+    var dQ = privateKey.privateExponent % (privateKey.q - BigInt.from(1));
     var exp2 = ASN1Integer(dQ);
     var iQ = privateKey.q.modInverse(privateKey.p);
     var co = ASN1Integer(iQ);
@@ -255,7 +255,7 @@ String decrypt(String ciphertext, RSAPrivateKey privateKey) {
 AsymmetricKeyPair<PublicKey, PrivateKey> getRsaKeyPair(
     SecureRandom secureRandom) {
   /// Set BitStrength to [1024, 2048 or 4096]
-  var rsapars = new RSAKeyGeneratorParameters(BigInt.from(65537), 1024, 5);
+  var rsapars = new RSAKeyGeneratorParameters(BigInt.from(65537), 2048, 5);
   var params = new ParametersWithRandom(rsapars, secureRandom);
   var keyGenerator = new RSAKeyGenerator();
   keyGenerator.init(params);
