@@ -14,9 +14,33 @@ class RsaKeyHelper {
   ///
   /// Returns a [AsymmetricKeyPair] based on the [RSAKeyGenerator] with custom parameters,
   /// including a [SecureRandom]
+  ///
+  /// The parameter [secureRandomAndBitStrength] is an array of length 2 that
+  /// uses a [SecureRandom] as first value and an [int] as second value for the BitStrength
+  ///
+  /// Recommended BitStrength [1024, 2048 or 4096] - default BitStrength [2048]
+  static AsymmetricKeyPair<PublicKey, PrivateKey> getRsaKeyPair(
+      List<dynamic> secureRandomAndBitStrength) {
+    var rsapars = new RSAKeyGeneratorParameters(
+        BigInt.from(65537), secureRandomAndBitStrength.last, 5);
+    var params =
+        new ParametersWithRandom(rsapars, secureRandomAndBitStrength.first);
+    var keyGenerator = new RSAKeyGenerator();
+    keyGenerator.init(params);
+    return keyGenerator.generateKeyPair();
+  }
+
+  /// Generate a [PublicKey] and [PrivateKey] pair
+  ///
+  /// Returns a [AsymmetricKeyPair] based on the [RSAKeyGenerator] with custom parameters,
+  /// including a [SecureRandom]
+  ///
+  /// Accepts a custom [int] as BitStrength. Recommended BitStrength [1024, 2048 or 4096]
+  /// - default BitStrength [2048]
   Future<AsymmetricKeyPair<PublicKey, PrivateKey>> computeRSAKeyPair(
-      SecureRandom secureRandom) async {
-    return await compute(getRsaKeyPair, secureRandom);
+      SecureRandom secureRandom,
+      {int bitStrength = 2048}) async {
+    return await compute(getRsaKeyPair, [secureRandom, bitStrength]);
   }
 
   /// Generates a [SecureRandom] to use in computing RSA key pair
@@ -246,18 +270,4 @@ String decrypt(String ciphertext, RSAPrivateKey privateKey) {
   var decrypted = cipher.process(new Uint8List.fromList(ciphertext.codeUnits));
 
   return new String.fromCharCodes(decrypted);
-}
-
-/// Generate a [PublicKey] and [PrivateKey] pair
-///
-/// Returns a [AsymmetricKeyPair] based on the [RSAKeyGenerator] with custom parameters,
-/// including a [SecureRandom]
-AsymmetricKeyPair<PublicKey, PrivateKey> getRsaKeyPair(
-    SecureRandom secureRandom) {
-  /// Set BitStrength to [1024, 2048 or 4096]
-  var rsapars = new RSAKeyGeneratorParameters(BigInt.from(65537), 2048, 5);
-  var params = new ParametersWithRandom(rsapars, secureRandom);
-  var keyGenerator = new RSAKeyGenerator();
-  keyGenerator.init(params);
-  return keyGenerator.generateKeyPair();
 }
