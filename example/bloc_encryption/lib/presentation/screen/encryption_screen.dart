@@ -7,7 +7,7 @@ import 'package:pointycastle/api.dart';
 class EncryptionScreen extends StatefulWidget {
   final AsymmetricKeyPair _asymmetricKeyPair;
   const EncryptionScreen(
-      {Key key, @required AsymmetricKeyPair asymmetricKeyPair})
+      {Key? key, required AsymmetricKeyPair asymmetricKeyPair})
       : assert(asymmetricKeyPair != null),
         _asymmetricKeyPair = asymmetricKeyPair,
         super(key: key);
@@ -133,7 +133,7 @@ class _EncryptionScreenState extends State<EncryptionScreen> {
                 onPressed: () {
                   _encryptionBloc.add(
                     EncryptString(_textController.text.trim(),
-                        widget._asymmetricKeyPair.publicKey),
+                        widget._asymmetricKeyPair.publicKey as RSAPublicKey),
                   );
                 },
               ),
@@ -182,7 +182,7 @@ class _EncryptionScreenState extends State<EncryptionScreen> {
                 onPressed: () {
                   _encryptionBloc.add(
                     DecryptString(
-                        encryptedString, widget._asymmetricKeyPair.privateKey),
+                        encryptedString, widget._asymmetricKeyPair.privateKey as RSAPrivateKey),
                   );
                 },
               ),
