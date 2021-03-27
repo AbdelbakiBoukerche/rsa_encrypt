@@ -25,11 +25,11 @@ dependencies:
     sdk: flutter
   rsa_encrypt:
     path: ../../
-  cupertino_icons: ^1.0.0
-  equatable: ^1.2.5
-  flutter_bloc: ^6.0.6
-  marquee: ^1.6.1
-  pointycastle: ^2.0.0
+  cupertino_icons: ^1.0.2
+  equatable: ^2.0.0
+  flutter_bloc: ^7.0.0
+  marquee: ^2.0.0
+  pointycastle: ^3.0.1
 
 dev_dependencies:
   flutter_test:
