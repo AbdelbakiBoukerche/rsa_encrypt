@@ -6,7 +6,7 @@ version: 1.0.5
 homepage: https://github.com/AbdelbakiBoukerche/rsa_encrypt
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
