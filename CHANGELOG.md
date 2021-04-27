@@ -11,3 +11,7 @@
 
 * Updating dependencies, Updating RSA keys header/footer, Changed BitStrength to 2048 (more secure), and added new example with BLoC pattern.
 
+
+## [2.0.0] - 27/04/2021
+
+* Updating dependencies, Support for Null-Safety

@@ -3,13 +3,13 @@ import 'package:bloc_encryption/business_logic/key_manager_bloc/keysmanager_bloc
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pointycastle/api.dart';
+import 'package:pointycastle/asymmetric/api.dart';
 
 class EncryptionScreen extends StatefulWidget {
   final AsymmetricKeyPair _asymmetricKeyPair;
   const EncryptionScreen(
-      {Key key, @required AsymmetricKeyPair asymmetricKeyPair})
-      : assert(asymmetricKeyPair != null),
-        _asymmetricKeyPair = asymmetricKeyPair,
+      {Key? key, required AsymmetricKeyPair asymmetricKeyPair})
+      : _asymmetricKeyPair = asymmetricKeyPair,
         super(key: key);
 
   @override
@@ -132,8 +132,10 @@ class _EncryptionScreenState extends State<EncryptionScreen> {
                 child: Text("Encrypt"),
                 onPressed: () {
                   _encryptionBloc.add(
-                    EncryptString(_textController.text.trim(),
-                        widget._asymmetricKeyPair.publicKey),
+                    EncryptString(
+                      _textController.text.trim(),
+                      widget._asymmetricKeyPair.publicKey as RSAPublicKey,
+                    ),
                   );
                 },
               ),
@@ -182,7 +184,9 @@ class _EncryptionScreenState extends State<EncryptionScreen> {
                 onPressed: () {
                   _encryptionBloc.add(
                     DecryptString(
-                        encryptedString, widget._asymmetricKeyPair.privateKey),
+                      encryptedString,
+                      widget._asymmetricKeyPair.privateKey as RSAPrivateKey,
+                    ),
                   );
                 },
               ),

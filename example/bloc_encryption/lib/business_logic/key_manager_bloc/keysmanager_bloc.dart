@@ -27,15 +27,15 @@ class KeysManagerBloc extends Bloc<KeysManagerEvent, KeysManagerState> {
 
   Stream<KeysManagerState> _mapShowPrivateKeyToState(
       ShowPrivateKey event) async* {
-    final String _privateKeyStr = _rsaKeyHelper
-        .encodePrivateKeyToPemPKCS1(event._asymmetricKeyPair.privateKey);
+    final String _privateKeyStr = _rsaKeyHelper.encodePrivateKeyToPemPKCS1(
+        event._asymmetricKeyPair.privateKey as RSAPrivateKey);
     yield ShowingPrivateKey(_privateKeyStr);
   }
 
   Stream<KeysManagerState> _mapShowPublicKeyToState(
       ShowPublicKey event) async* {
-    final String _publicKeyStr = _rsaKeyHelper
-        .encodePublicKeyToPemPKCS1(event._asymmetricKeyPair.publicKey);
+    final String _publicKeyStr = _rsaKeyHelper.encodePublicKeyToPemPKCS1(
+        event._asymmetricKeyPair.publicKey as RSAPublicKey);
     yield ShowingPublicKey(_publicKeyStr);
   }
 }
