@@ -4,6 +4,8 @@ import 'package:bloc_encryption/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'presentation/screen/home_screen.dart';
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -28,13 +30,12 @@ class _MyAppState extends State<MyApp> {
     return BlocProvider<AppInitBloc>(
       create: (BuildContext context) => _appInitBloc,
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'RSAEncrypt Demot',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: BlocBuilder<AppInitBloc, AppInitState>(
-          // ignore: missing_return
           builder: (context, state) {
             if (state is InitialState) {
               return HomeScreen();
@@ -49,6 +50,7 @@ class _MyAppState extends State<MyApp> {
             if (state is KeysGenerated) {
               return EncryptionScreen(asymmetricKeyPair: state.keyPair);
             }
+            return HomeScreen();
           },
         ),
       ),
