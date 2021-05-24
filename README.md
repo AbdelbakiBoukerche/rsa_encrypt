@@ -25,23 +25,23 @@ RSA keys **generator**, String **encryption** and **decryption** and String **si
 
   
 
-let say **Alice** want to send a message to **Bob**. a normal messaging solution would be : Alice write the message and send it to Bob the only problem is that the Message will be **transferred** in **PlainText** and every one who **intercept** the message can **read it.**
+let say **Alice** want to send a message to **Bob**. a normal messaging solution would be: Alice write the message and send it to Bob the only problem is that the Message will be **transferred** in **PlainText** and everyone who **intercept** the message can **read it.**
 
   
 
-*This is were RSA comes to play*:
+*This is where RSA comes to play*:
 
   
 
 1. We generate keys( public & private ) for Bob.
 
-2. If Alice wanted to send a message to Bob she have to encrypt that message with Bob's public keys.
+2. If Alice wanted to send a message to Bob she has to encrypt that message with Bob's public keys.
 
 3. Then the encrypted message will be transferred to Bob and only Bob's private key can decrypt that message.
 
   
 
-that way no none can decrypt the message except the owner of that specific private key.
+that way no one can decrypt the message except the owner of that specific private key.
 
   
 
@@ -72,9 +72,9 @@ in order to use RSA encryption you need to generate *2 key*s a **public key** (u
   
 
  1. Generate **KeyPair** with the function **getKeyPair()** store the returned value in **futureKeyPair**.
- 2. Once we get data from the future we can store that data in **keyPair** (Now we have acces to our private and public key).
+ 2. Once we get data from the future we can store that data in **keyPair** (Now we have access to our private and public key).
  3. In order to view our keys as "a string" we need to use two functions **encodePrivateKeyToPemPKCS1(*keyPair.privateKey*)** & **encodePublicKeyToPemPKCS1(*keyPair.publicKey*)**.
- 4. In order to **encrypt** and **decrypt** strings you can use two functions
+ 4. To **encrypt** and **decrypt** strings you can use two functions
  * **encrypt()** : use this function to encrypt a string, pass your **string** as first argument and a **public key** as the second one. **[IMPORTANT]**: this will **return a string** so you should **store the returned** value in a variable.
  * **decrypt()** : use this function to decrypt an **encrypted String**, pass your **encrypted String** as first argument and a **private key** as the second. this will also **return a string** dont forget to store it :) .
 
