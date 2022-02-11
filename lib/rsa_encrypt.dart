@@ -17,8 +17,15 @@ class RsaKeyHelper {
   /// Returns a [AsymmetricKeyPair] based on the [RSAKeyGenerator] with custom parameters,
   /// including a [SecureRandom]
   Future<AsymmetricKeyPair<PublicKey, PrivateKey>> computeRSAKeyPair(
-      SecureRandom secureRandom) async {
-    return await compute(getRsaKeyPair, secureRandom);
+      SecureRandom secureRandom,
+      {int bitStrength = 2048}) {
+    // saving arguments into a List to work with the `compute()` function
+    final params = [secureRandom, bitStrength];
+
+    return !kIsWeb
+        ? compute(getRsaKeyPair, params)
+        : getRsaKeyPair(params)
+            as Future<AsymmetricKeyPair<PublicKey, PrivateKey>>;
   }
 
   /// Generates a [SecureRandom] to use in computing RSA key pair
@@ -254,10 +261,14 @@ String decrypt(String ciphertext, RSAPrivateKey privateKey) {
 ///
 /// Returns a [AsymmetricKeyPair] based on the [RSAKeyGenerator] with custom parameters,
 /// including a [SecureRandom]
-AsymmetricKeyPair<PublicKey, PrivateKey> getRsaKeyPair(
-    SecureRandom secureRandom) {
+AsymmetricKeyPair<PublicKey, PrivateKey> getRsaKeyPair(List arguments) {
+  SecureRandom secureRandom = arguments[0];
+  int bitStrength = arguments[1];
+
   /// Set BitStrength to [1024, 2048 or 4096]
-  var rsapars = new RSAKeyGeneratorParameters(BigInt.from(65537), 2048, 5);
+  assert([1024, 2048, 4096, 8192].contains(bitStrength));
+  var rsapars =
+      new RSAKeyGeneratorParameters(BigInt.from(65537), bitStrength, 5);
   var params = new ParametersWithRandom(rsapars, secureRandom);
   var keyGenerator = new RSAKeyGenerator();
   keyGenerator.init(params);
